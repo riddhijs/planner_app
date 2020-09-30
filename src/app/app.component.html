@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <mat-tab-group>
+
+    <mat-tab label="Task management for new App Developement">
+      <div class="container" >
+        <h2 class="section-heading">Task Backlog</h2>
+        <div cdkDropList #addedList="cdkDropList"  class="item-list" [cdkDropListData]="AddedList"
+          [cdkDropListConnectedTo]="[doneList]"  (cdkDropListDropped)="onDrop($event)">
+          <div  class="item-box" *ngFor="let addedList of AddedList" cdkDrag><div>{{addedList.name}}</div><div>{{addedList.calories}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="container" >
+        <!-- <div> <h2 class="section-heading">Drop items</h2> 
+          <h2 class="col-md-4" class="section-heading">{{countcal}}</h2>
+         </div> -->
+         <!-- <div class= "twoheading"  class="input-group ml-4">
+           <div class="section-heading">Your Bucket</div>
+           <div class="section-heading">{{countcal}}</div>
+         </div>
+
+         -->
+         <div class= "twoheading" >
+           <p class="section-heading">Current Sprint &nbsp; &nbsp; &nbsp; &nbsp;  Total hours:{{countcal}}</p>
+          
+        </div>
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="DropList"
+          [cdkDropListConnectedTo]="[addedList]" class="item-list" (cdkDropListDropped)="onDrop($event)" (cdkDropListDropped)="count()">
+          <div class="item-box" *ngFor="let droplist of DropList" cdkDrag><div>{{droplist.name}}</div><div>{{droplist.calories}}</div></div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
